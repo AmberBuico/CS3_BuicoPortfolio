@@ -1,0 +1,43 @@
+body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #7f4bb4;
+    }
+
+    h1 {    
+      color: #000000;
+    }
+
+    table {
+      margin: 20px auto;
+      border-collapse: collapse;
+      width: 50%;
+      background-color: rgb(185, 146, 247);
+    }
+
+    th, td {
+      border: 1px solid rgb(48, 9, 49);
+      padding: 10px;
+    }
+
+    th {
+      background-color: #b186cb;
+    }
+
+    nav {
+      background-color: #650094;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    copyright { display: block; }

@@ -1,53 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <title>My Day's Vibe</title>
+  <meta name="description" content="My First Graded Exercise for Quarter 2 :D">
+  <meta name="author" content="Amber Daphne A. Buico">
 
   <link rel="icon" href="favicon.png">
-
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background-color: #7f4bb4;
-    }
-
-    h1 {
-      color: #000000;
-    }
-
-    table {
-      margin: 20px auto;
-      border-collapse: collapse;
-      width: 50%;
-      background-color: rgb(185, 146, 247);
-    }
-
-    th, td {
-      border: 1px solid rgb(48, 9, 49);
-      padding: 10px;
-    }
-
-    th {
-      background-color: #b186cb;
-    }
-
-    nav {
-      background-color: #650094;
-      padding: 10px;
-      margin-bottom: 20px;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 10px;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  <link rel="stylesheet" href="Q2style.css">
 </head>
 <body>
 
@@ -98,6 +60,14 @@
     <a href="https://timsur29.github.io/CS3_1stQtrPortfolio/public/Q2_1stGraded"> Joshua's Mon sched</a>
     <a href="https://ysasalvador.github.io/CS3_1stQtrPortfolio/public/pracexer.html"> Ysa's Tues sched</a>
   </nav>
+
+  <p class="copyright">
+    &copy; <span id="year"></span> Amber Daphne A. Buico.  All rights reserved.
+  </p>
+
+  <script>
+    document.getElementById('year').textContext = new Date().getFullYear();
+  </script>
 
 </body>
 </html>
