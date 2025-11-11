@@ -1,0 +1,45 @@
+<body style="text-align: center; font-family: Arial, sans-serif; transition: background-color 0.5s;">
+
+  <h1 style="margin-top: 40px;">🧩 Task 1 — Click Anywhere to Change Color!</h1>
+
+  <script>
+    document.body.onclick = changeColor
+
+    function changeColor() {
+      var colors = ["red", "blue", "green", "yellow", "purple", "pink", "orange", "cyan", "lime"];
+      var randomIndex = Math.floor(Math.random() * colors.length);
+      var randomColor = colors[randomIndex];
+
+      document.body.style.backgroundColor = randomColor;
+    }
+  </script>
+
+  <div style="
+      margin-top: 60px;
+      padding: 20px;
+      width: 60%;
+      margin-left: auto;
+      margin-right: auto;
+      border: 2px dashed #008080; 
+      background: #e0ffff; 
+      border-radius: 10px;
+      color: #333;
+      text-align: left;
+    ">
+   
+   <h2 style="color: #008080;">Reflection</h2>
+    
+    <p style="font-size: 18px;">
+      The part of the code that actually listens for and responds to my click is the line:
+      <code style="background-color: #fff; padding: 2px 4px; border-radius: 3px; border: 1px solid #ccc; font-weight: bold;">document.body.onclick = changeColor</code>.
+    </p>
+    
+    <p style="font-size: 18px;">
+      This line is super important! It's like the "hook" that connects the click event (when I press the mouse) to the changeColor function. Without it, I could click all day, and nothing would happen because the computer doesn't know what action to run when the event happens:D
+    </p>
+  </div>
+
+</body>
+
+
+

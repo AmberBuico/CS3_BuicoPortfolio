@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task 5: Keypress Reaction Game</title>
+    <style>
+        body {
+            font-family: 'Arial Black', sans-serif;
+            text-align: center;
+            background: #1a1a1a;
+            color: #fff;
+            padding-top: 40px;
+            margin: 0;
+            user-select: none;
+        }
+
+        h1 {
+            color: #dda0dd;
+            margin-bottom: 20px;
+        }
+
+        #gameArea {
+            background: #2d1d3d;
+            border-radius: 15px;
+            padding: 30px 20px;
+            width: 80%;
+            max-width: 500px;
+            margin: 0 auto 30px auto;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            border: 3px solid #8a2be2;
+        }
+
+        #letterDisplay {
+            font-size: 8rem;
+            font-weight: 900;
+            color: #8a2be2;
+            margin: 20px 0;
+            height: 120px;
+            line-height: 120px;
+        }
+
+        #statusMessage {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .correct { color: #50fa7b; }
+        .wrong { color: #ff5555; }
+        
+        #scoreDisplay {
+            font-size: 1.5rem;
+            margin-top: 15px;
+            color: #dda0dd;
+        }
+
+        .instructions {
+            font-size: 1.1rem;
+            color: #dda0dd;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🧩 Task 5 — Reaction Game!</h1>
+
+    <div id="gameArea">
+        <div class="instructions">
+            Match the letter shown on screen!
+        </div>
+        
+        <div id="letterDisplay">A</div> 
+        
+        <div id="statusMessage">Press the key to start!</div>
+        
+        <div id="scoreDisplay">Score: 0</div>
+    </div>
+
+
+    <script>
+        let currentTargetKey = '';
+        let score = 0;
+        const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+        const letterDisplay = document.getElementById('letterDisplay');
+        const statusMessage = document.getElementById('statusMessage');
+        const scoreDisplay = document.getElementById('scoreDisplay');
+
+        function setRandomTarget() {
+            const randomIndex = Math.floor(Math.random() * alphabet.length);
+            currentTargetKey = alphabet[randomIndex];
+            letterDisplay.textContent = currentTargetKey;
+            
+            statusMessage.textContent = 'Match the key!';
+            statusMessage.className = '';
+        }
+
+        function handleKeyPress(event) {
+            const pressedKey = event.key.toUpperCase();
+
+            if (pressedKey === currentTargetKey) {
+                statusMessage.textContent = '✅ Correct!';
+                statusMessage.className = 'correct';
+                
+                score++;
+                scoreDisplay.textContent = 'Score: ' + score;
+
+                setTimeout(setRandomTarget, 300); 
+            } else {
+                statusMessage.textContent = '❌ Try again! You pressed: ' + pressedKey;
+                statusMessage.className = 'wrong';
+                
+                score--;
+                scoreDisplay.textContent = 'Score: ' + score;
+            }
+        }
+
+        window.onload = function() {
+            setRandomTarget();
+            document.body.onkeypress = handleKeyPress;
+        };
+        
+    </script>
+
+</body>
+</html>
+   

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task 2: Hover to Zoom</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            padding-top: 50px;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background: red; 
+            margin: 50px auto;
+            transition: all 0.3s ease; 
+        }
+
+        .reflection-box {
+            margin-top: 60px;
+            padding: 20px;
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+            border: 2px dashed #008080;
+            background: #e0ffff;
+            border-radius: 10px;
+            color: #333;
+            text-align: left;
+        }
+
+        .reflection-box h2 {
+            color: #008080;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🧩 Task 2 — Hover to Zoom</h1>
+
+    <div id="box"></div>
+
+    <script>
+        const box = document.getElementById("box");
+        box.onmouseover = changeColorScale;
+
+        function changeColorScale() {
+            var colors = ["royalblue", "purple", "green", "orange", "pink", "yellow"];
+            var randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+            box.style.backgroundColor = randomColor;
+            box.style.transform = "scale(1.2)"; 
+        }
+
+        box.onmouseout = resetBox;
+
+        function resetBox() {
+            box.style.backgroundColor = "red";
+            box.style.transform = "scale(1)";
+        }
+    </script>
+
+    <div class="reflection-box">
+        <h2 style="color: #008080;">Reflection</h2>
+        
+        <p style="font-size: 18px;">
+            The difference between mouseover and mouseout is that mouseover is the event that runs the code when the mouse moves onto the element.
+        </p>
+        
+        <p style="font-size: 18px;">
+            Mouseout is the opposite! It runs the code when the mouse moves off the element.
+        </p>
+        
+        <p style="font-size: 18px;">
+            We need both of these events for the "Hover to Zoom" to work correctly. Mouseover makes the box change and zoom in, and mouseout brings it back to its normal, starting state.
+        </p>
+    </div>
+
+</body>
+</html>

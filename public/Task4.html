@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task 4 - Build Your Own Event Responder</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background: #f0f8ff; 
+            padding-bottom: 50px;
+        }
+
+        h1 {
+            color: #1a1a1a;
+            margin-bottom: 40px;
+        }
+
+        #myButton {
+            margin-top: 40px;
+            padding: 12px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            background: #4a90e2;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        #myButton:hover {
+            background: #357ac8;
+        }
+
+        #rotateBox {
+            width: 120px;
+            height: 120px;
+            background: tomato;
+            line-height: 120px; 
+            color: white;
+            font-weight: bold;
+            margin: 40px auto;
+            transition: transform 0.3s ease-out; 
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            content: "Hover Me!";
+        }
+        
+        #keyMsg {
+            margin-top: 50px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .reflection-box {
+            width: 60%;
+            margin: 40px auto;
+            border: 2px dashed #999;
+            padding: 20px;
+            border-radius: 10px;
+            background: #fafafa;
+            text-align: left;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .reflection-box h2 {
+            color: #4a90e2; 
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🧩 Task 4 — Build Your Own Event Responder</h1>
+    
+    <button id="myButton">Click me!</button>
+    
+    <div id="rotateBox">Hover to Rotate</div>
+    
+    <h2 id="keyMsg">Press any key to see the reaction!</h2>
+
+    <script>
+        const myButton = document.getElementById("myButton");
+        myButton.onclick = function() {
+            myButton.innerHTML = "I was clicked!";
+        }
+
+        const rotateBox = document.getElementById("rotateBox");
+   
+        rotateBox.onmouseover = function() {
+            rotateBox.style.transform = "rotate(20deg)";
+        }
+        
+        rotateBox.onmouseout = function() {
+            rotateBox.style.transform = "rotate(0deg)";
+        }
+
+        document.body.onkeypress = function(event) {
+            document.getElementById("keyMsg").innerHTML =
+                "You pressed: <span style='color: tomato;'>" + event.key.toUpperCase() + "</span>";
+        }
+    </script>
+
+    <div class="reflection-box">
+        <h2>Reflection</h2>
+        
+        <p style="font-size: 16px;">
+            For me, the easiest event was the click event because it's the most straightforward...it only needs a single function to run exactly once when the button is pressed.
+        </p>
+        
+        <p style="font-size: 16px;">
+            The trickiest was the keypress event. While it works easily, the challenge was remembering that I needed to pass the `event` object to the function and then access `event.key` to actually see which button I typed. It required an extra step to get the information I wanted.
+        </p>
+        
+        <p style="font-size: 16px;">
+            Overall, the mouseover/mouseout pair felt the most powerful because it let me create a two-part effect (rotate and un-rotate), making the element feel truly interactive :DDDD
+        </p>
+    </div>
+
+</body>
+</html>

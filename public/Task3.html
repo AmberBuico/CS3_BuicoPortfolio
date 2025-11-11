@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task 3: Keypress Reaction</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            padding-top: 50px;
+            transition: background-color 0.5s ease; 
+        }
+
+        .reflection-box {
+            margin-top: 60px;
+            padding: 20px;
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+            border: 2px dashed #800080; 
+            background: #f0e6fa; 
+            border-radius: 10px;
+            color: #333;
+            text-align: left;
+        }
+
+        .reflection-box h2 {
+            color: #800080;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🧩 Task 3 — Keypress Reaction</h1>
+
+    <h2>Press any key</h2>
+    <h3>Refresh the page to reset</h3>
+
+    <div id="keyDisplay" style="font-size: 30px; margin-top: 20px; font-weight: bold;">
+        You pressed: <span style="color: purple;">_</span>
+    </div>
+
+    <script>
+        document.body.style.backgroundColor = "#f2e8ff"; 
+        document.body.onkeypress = changeColorPress;
+
+        function changeColorPress(event) {
+            document.body.style.backgroundColor = "purple";
+            document.getElementById("keyDisplay").innerHTML = 
+                "You pressed: <span style='color: white; background: purple; padding: 5px; border-radius: 5px;'>" + event.key + "</span>";
+        }
+    </script>
+
+    <div class="reflection-box">
+        <h2 style="color: #800080;">Reflection</h2>
+        
+        <p style="font-size: 18px;">
+            The browser knows which key I pressed because the event itself carries a little package of information called the event object.
+        </p>
+        
+        <p style="font-size: 18px;">
+            When I defined the function, I put `changeColorPress(event)`, which grabs that package. Inside the package, there's a property called `event.key`, and that's the thing that gives me the exact letter or number I typed!
+        </p>
+    </div>
+
+</body>
+</html>

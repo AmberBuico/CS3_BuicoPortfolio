@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wrap-Up Discussion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: left;
+            background: #fcf8ff; 
+            color: #333;
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid #d4c1e4;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #6a0dad; 
+            border-bottom: 2px solid #b8a6d8;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: #9370db; 
+            margin-top: 30px;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        li {
+            background: #e9e3f8; 
+            margin: 10px 0;
+            padding: 15px;
+            border-left: 5px solid #6a0dad;
+            border-radius: 5px;
+        }
+
+        li strong {
+            color: #4b0082; 
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🧠 Wrap-Up Discussion</h1>
+
+    <h2>1. What is an event in your own words?</h2>
+    <p>
+        I think of an event as a notification that the browser sends out to tell the code that something important just happened. It's basically a signal! It's not just things I do with the mouse, like clicking or hovering (which I did a lot in the tasks), but it also includes pressing a key on the keyboard, or even the whole webpage finishing loading. It's the moment when my code gets permission to run an action.
+    </p>
+
+    <h2>2. Why do websites need event listeners?</h2>
+    <p>
+        Websites need event listeners because they are the "hook" that connects the event (the signal) to the function (the action). If I have a great function that changes the background color, it's completely useless until I use an event listener, like <code>document.body.onclick = changeColor</code>, to make it run. The listener is what makes the page interactive, turning a static HTML page into a dynamic website that actually responds to me. Without them, buttons wouldn't button, and games wouldn't play!
+    </p>
+
+    <h2>3. How could you use events to make a quiz, a game, or a drawing app?</h2>
+    <p>
+        After finishing the coding bonus, I can see how events are the foundation for almost anything interactive. Here are some examples of how I'd use them:
+    </p>
+    <ul>
+        <li>
+            <strong>Making a Quiz:</strong> I would use the <strong>onclick</strong> event listener on all the answer buttons. When a user clicks an option, the listener would run a function that checks if the answer matches the correct answer, gives instant feedback ("Correct!" or "Wrong!"), and updates the user's score.
+        </li>
+        <li>
+            <strong>Making a Simple Game:</strong> Just like I did in Task 5, I would use <strong>onkeypress</strong>. I would listen for specific keys like the arrow keys or 'S', 'R' to control a player on the screen. Pressing a key runs a function that changes the player's position, making the game playable.
+        </li>
+        <li>
+            <strong>Making a Drawing App:</strong> This would need two main events. I would use <strong>onmousedown</strong> to know when the user first pushes the mouse button down to start drawing, and then use <strong>onmousemove</strong> to draw a continuous line as long as the mouse is moving and the button is still pressed. When the user lifts the button, I would use <strong>onmouseup</strong> to stop drawing the line.
+        </li>
+    </ul>
+
+</body>
+</html>
