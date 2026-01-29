@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Club Application Form</title>
+
+    <style>
+        body {
+            background-image: url('sunset.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        form {
+            background: rgba(255, 255, 255, 0.9); 
+            padding: 40px;
+            border-radius: 20px;
+            width: 500px;
+        }
+
+        h2 { text-align: center; }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+        }
+
+        .empty-field {
+            border: 2px solid red;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .radio-group {
+            margin-top: 8px;
+            margin-bottom: 15px; 
+        }
+
+        .radio-group label {
+            display: inline-block; 
+            font-weight: normal;
+            margin-right: 20px;   
+            cursor: pointer;
+        }
+
+        .radio-group input {
+            width: auto;           
+            margin-right: 6px;
+            vertical-align: middle; 
+        }
+    </style>
+</head>
+
+<body>
+
+<form id="signupForm" 
+      onsubmit="saveSignup(); return false;" 
+      onreset="return confirm('Clear everything and start over?')">
+
+    <h2>Club Application</h2>
+
+    <label>Student ID:
+        <input type="text" id="sid" required>
+    </label>
+
+    <label>Full Name:
+        <input type="text" id="fname" required>
+    </label>
+
+    <label>Birthday:
+        <input type="date" id="bday" required>
+    </label>
+
+    <label>Email Address:
+        <input type="email" id="email" required>
+    </label>
+
+    <label>Mobile Phone:
+        <input type="text" id="phone" required>
+    </label>
+
+    <label>Grade Level:
+        <select id="grade" required>
+            <option value="">--Select--</option>
+            <option value="7">Grade 7</option>
+            <option value="8">Grade 8</option>
+            <option value="9">Grade 9</option>
+            <option value="10">Grade 10</option>
+        </select>
+    </label>
+
+    <div class="radio-group">
+        <label>
+            <input type="radio" name="type" value="Intern"> Intern
+        </label>
+
+        <label>
+            <input type="radio" name="type" value="Extern"> Extern
+        </label>
+    </div>
+
+    <label>Preferred Club:
+        <select id="club" required>
+            <option value="">--Select One--</option>
+            <option value="Himig Agham">Himig Agham</option>
+            <option value="Likha">Likha</option>
+            <option value="Flux">Flux</option>
+            <option value="Sagala">Sagala</option>
+            <option value="Alianti">Alianti</option>
+        </select>
+    </label>
+
+    <label>Why do you want to join?
+        <textarea id="why" rows="3" required></textarea>
+    </label>
+
+    <div class="buttons">
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+        <button type="button" onclick="viewSignups()">View Signups</button>
+    </div>
+
+</form>
+
+<script>
+function saveSignup() {
+
+    if (!confirm("Ready to join the club?")) {
+        return;
+    }
+
+    // get existing signups
+    let signups = localStorage.getItem("clubSignups");
+
+    // if none yet, create empty array
+    if (signups === null) {
+        signups = [];
+    } else {
+        signups = JSON.parse(signups);
+    }
+
+    // get intern / extern value
+    let type = document.querySelector('input[name="type"]:checked');
+    type = type ? type.value : "";
+
+    // create object
+    let signup = {
+        id: document.getElementById("sid").value,
+        name: document.getElementById("fname").value,
+        birthday: document.getElementById("bday").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        grade: document.getElementById("grade").value,
+        club: document.getElementById("club").value,
+        type: type,
+        reason: document.getElementById("why").value
+    };
+
+    signups.push(signup);
+
+    localStorage.setItem("clubSignups", JSON.stringify(signups));
+
+    alert("Signup saved successfully!");
+    document.getElementById("signupForm").reset();
+}
+
+function viewSignups() {
+    window.location.href = "Q3_3GStrontiumBuico_ViewSignups.html";
+}
+</script>
+
+</body>
+</html>

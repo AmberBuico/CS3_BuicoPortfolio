@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Sign-Ups</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 5px;
+            text-align: center;
+        }
+
+        th {
+            background-color: rgb(96, 0, 128);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>List of Students Who Signed-Up</h2>
+<p>by Ambersaur</p>
+
+<a href="Q3_3GStrontiumBuico_Signup.html">Back to Signup</a><br><br>
+
+Select Your Club:
+<select id="clubFilter" onchange="displaySignups()">
+    <option value="ALL">-- select an option --</option>
+    <option value="Himig Agham">Himig Agham</option>
+    <option value="Likha">Likha</option>
+    <option value="Flux">Flux</option>
+    <option value="Sagala">Sagala</option>
+    <option value="Alianti">Alianti</option>
+</select>
+
+<p id="total">Total Signup: 0</p>
+
+<table id="signupTable">
+    <tr>
+        <th>Club</th>
+        <th>ID</th>
+        <th>Full Name</th>
+        <th>Grade</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Intern/Extern</th>
+    </tr>
+</table>
+
+<p id="message"></p>
+
+<script>
+function displaySignups() {
+
+    let table = document.getElementById("signupTable");
+    let totalText = document.getElementById("total");
+    let message = document.getElementById("message");
+
+    table.innerHTML = `
+        <tr>
+            <th>Club</th>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Grade</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Intern/Extern</th>
+        </tr>
+    `;
+
+    let signups = localStorage.getItem("clubSignups");
+
+    if (signups === null) {
+        message.innerHTML = "No sign-ups saved yet.";
+        totalText.innerHTML = "Total Signup: 0";
+        return;
+    }
+
+    signups = JSON.parse(signups);
+    let selected = document.getElementById("clubFilter").value;
+    let count = 0;
+
+    message.innerHTML = "";
+
+    for (let i = 0; i < signups.length; i++) {
+
+        if (selected === "ALL" || signups[i].club === selected) {
+
+            let row = table.insertRow();
+            row.insertCell(0).innerHTML = signups[i].club;
+            row.insertCell(1).innerHTML = signups[i].id;
+            row.insertCell(2).innerHTML = signups[i].name;
+            row.insertCell(3).innerHTML = signups[i].grade;
+            row.insertCell(4).innerHTML = signups[i].email;
+            row.insertCell(5).innerHTML = signups[i].phone;
+            row.insertCell(6).innerHTML = signups[i].type;
+
+            count++;
+        }
+    }
+
+    if (count === 0) {
+        message.innerHTML = "No Sign Ups for the club";
+    }
+
+    totalText.innerHTML = "Total Signup: " + count;
+}
+
+displaySignups();
+</script>
+
+</body>
+</html>
