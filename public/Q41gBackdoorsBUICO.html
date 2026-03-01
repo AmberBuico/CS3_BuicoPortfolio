@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Movie Storage Viewer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, #f4ecff, #efe6ff);
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .nav { margin-bottom: 20px; }
+    .nav a { text-decoration: none; color: #b43fbf; font-weight: bold; }
+
+    .card {
+      width: 100%;
+      max-width: 700px;
+      background: white;
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 10px 25px rgba(90, 60, 140, 0.15);
+      border: 2px solid #e3d6ff;
+    }
+
+    h2 { color: #b43fbf; text-align: center; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border: 1px solid #ddd;
+      font-size: 13px;
+    }
+
+    th { background: #f9f9f9; color: #666; font-weight: normal; }
+
+    .json-text {
+      font-family: "Courier New", monospace;
+      color: #d63384;
+      word-break: break-all;
+    }
+
+    .btn-container { text-align: center; margin-top: 20px; }
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #cc81e4;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover { background: #b43fbf; }
+  </style>
+</head>
+<body>
+
+<div class="nav">
+    <a href="q41gStrontiumBUICO.html">← Back to Movie Form</a>
+</div>
+
+<div class="card">
+  <h2>LocalStorage Status</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Key</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody id="storageBody">
+      </tbody>
+  </table>
+
+  <div class="btn-container">
+    <button onclick="clearStorage()">Clear All Data</button>
+  </div>
+</div>
+
+<script>
+  function loadView() {
+    const tbody = document.getElementById("storageBody");
+    const data = localStorage.getItem("movies");
+
+    if (!data) {
+        tbody.innerHTML = "<tr><td>movies</td><td style='color:gray'>No data found.</td></tr>";
+        return;
+    }
+
+    tbody.innerHTML = `
+      <tr>
+        <td style="vertical-align: top; font-weight: bold;">movies</td>
+        <td class="json-text">${data}</td>
+      </tr>
+    `;
+  }
+
+  function clearStorage() {
+    if(confirm("Delete all movies?")) {
+        localStorage.removeItem("movies");
+        loadView();
+    }
+  }
+
+  window.onload = loadView;
+</script>
+
+</body>
+</html>
