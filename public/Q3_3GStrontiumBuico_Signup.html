@@ -142,21 +142,17 @@ function saveSignup() {
         return;
     }
 
-    // get existing signups
     let signups = localStorage.getItem("clubSignups");
 
-    // if none yet, create empty array
     if (signups === null) {
         signups = [];
     } else {
         signups = JSON.parse(signups);
     }
 
-    // get intern / extern value
     let type = document.querySelector('input[name="type"]:checked');
     type = type ? type.value : "";
 
-    // create object
     let signup = {
         id: document.getElementById("sid").value,
         name: document.getElementById("fname").value,
